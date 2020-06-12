@@ -10,7 +10,7 @@ def send(phone, message):
     relative_path = 'osascript/send_message.js'
     path = f'{dir_path}/{relative_path}'
     cmd = f'osascript -l JavaScript {path} {quote(phone)} {quote(message)}'
-    subprocess.call(cmd, shell=True)
+    subprocess.call(cmd, shell=True, stderr=subprocess.DEVNULL)
 
     # Get chat message db that was sent (look at most recently sent to a phone number)
     db_conn.open()
